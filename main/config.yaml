@@ -1,0 +1,15 @@
+# Network Configuration
+ingestion:
+  host: "0.0.0.0"
+  port: 5005
+
+# Web Server
+server:
+  host: "0.0.0.0"
+  port: 8000
+
+# Feature Engineering Logic
+engine:
+  max_window_size: 30       # Max packets per flow before calculating stats
+  inactivity_timeout: 5.0   # Seconds of silence before a flow is considered "done"
+  malice_threshold_high: 0.80 # Probability > 80% = HIGH Alert

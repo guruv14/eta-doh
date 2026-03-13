@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETA-DoH |  Monitor</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo">ETA-DOH <span>CORE</span></div>
+        
+        <div class="nav-item active" onclick="switchView('live', this)">
+            <i class="fas fa-chart-line"></i> Live Inference
+        </div>
+        <div class="nav-item" onclick="switchView('logs', this)">
+            <i class="fas fa-list"></i> System Logs
+        </div>
+        
+        <div class="status-box">
+            <div class="status-row">
+                <span class="status-label">SYSTEM:</span>
+                <span class="status-val text-safe">ONLINE</span>
+            </div>
+            <div class="status-row">
+                <span class="status-label">SOCKET:</span>
+                <span id="ws-status" class="status-val text-danger">DISCONNECTED</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        
+        <div id="view-live" class="view-section">
+            <div class="stats-grid">
+                <div class="card stat-card">
+                    <label>THREAT LEVEL</label>
+                    <div id="threat-val" class="value">0.00%</div>
+                </div>
+                <div class="card stat-card">
+                    <label>ACTIVE FLOWS</label>
+                    <div id="flow-val" class="value">0</div>
+                </div>
+                <div class="card stat-card">
+                    <label>LATEST TARGET</label>
+                    <div id="target-val" class="value ip-address">--</div>
+                </div>
+            </div>
+
+            <div class="card chart-container">
+                <canvas id="mainChart"></canvas>
+            </div>
+
+            <div class="toolbar">
+                <h3>Live Traffic Feed</h3>
+                <button class="btn-export" onclick="downloadCSV()">
+                    <i class="fas fa-download"></i> Export CSV
+                </button>
+            </div>
+
+            <div class="card table-container">
+                <table id="logs-table">
+                    <thead>
+                        <tr>
+                            <th>TIMESTAMP</th>
+                            <th>FLOW KEY</th>
+                            <th>MEAN IAT</th>
+                            <th>SKEW</th>
+                            <th>PROBABILITY</th>
+                            <th>SEVERITY</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="view-logs" class="view-section" style="display: none;">
+            <div class="card">
+                <h3>System Event Log</h3>
+                <p class="text-muted">Backend operational events and persistent high-severity alerts.</p>
+                <div id="system-log-console" class="console-box">
+                    <div class="log-entry">[SYSTEM] Dashboard initialized...</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>

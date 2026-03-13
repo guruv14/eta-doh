@@ -1,0 +1,240 @@
+:root {
+    --bg-body: #121212;      /* Deep Matte Black */
+    --bg-panel: #1e1e1e;     /* Dark Grey Panel */
+    --border: #333333;       /* Subtle Borders */
+    --primary: #007acc;      /* Admin Blue */
+    --accent: #28a745;       /* Status Green */
+    --danger: #dc3545;       /* Alert Red */
+    --text-main: #e0e0e0;
+    --text-muted: #888888;
+    
+    --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "Consolas", "Monaco", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- SIDEBAR  */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    color: var(--text-main);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 10px;
+}
+
+.logo span { color: var(--primary); }
+
+.nav-item {
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    transition: all 0.2s;
+}
+
+.nav-item:hover { background-color: #2a2a2a; color: var(--text-main); }
+.nav-item.active { 
+    background-color: var(--primary); 
+    color: white; 
+    font-weight: 600; 
+}
+
+.status-box {
+    margin-top: auto;
+    background: #181818;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    gap: 20px;
+    overflow-y: auto; /* Scroll inside main area only */
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.stat-card label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.stat-card .value {
+    font-size: 1.8rem;
+    font-family: var(--font-mono);
+    font-weight: 400;
+}
+
+/* Chart Area */
+.chart-container {
+    height: 300px;
+    position: relative;
+    padding: 15px;
+}
+
+/* Data Table (Network Log Style) */
+.table-container {
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+}
+
+thead {
+    background-color: #252526;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+th {
+    text-align: left;
+    padding: 12px 20px;
+    color: var(--text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+tbody {
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+tr:hover { background-color: #2a2a2a; }
+
+td {
+    padding: 10px 20px;
+    color: var(--text-main);
+}
+
+
+.text-safe { color: var(--accent); }
+.text-danger { color: var(--danger); font-weight: bold; }
+.text-warn { color: #ffc107; }
+
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-body); }
+::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+
+
+
+/* Toolbar for Export Button */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.toolbar h3 { color: var(--text-main); font-size: 1rem; }
+
+/* Export Button Style */
+.btn-export {
+    background: var(--bg-panel);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    font-weight: 600;
+}
+
+.btn-export:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* System Logs Console Look */
+.console-box {
+    background: #000;
+    border: 1px solid #333;
+    padding: 15px;
+    height: 500px;
+    overflow-y: auto;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #bbb;
+}
+
+.log-entry {
+    padding: 4px 0;
+    border-bottom: 1px solid #111;
+}
+
+.log-entry.high-sev { color: var(--danger); }
+.log-entry.sys { color: var(--primary); }
