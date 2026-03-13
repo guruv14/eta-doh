@@ -1,5 +1,10 @@
 # ETA-DoH: Encrypted Traffic Analysis
+![Python](https://img.shields.io/badge/Python-3.14-blue) ![Bash](https://img.shields.io/badge/Bash-Scripting-black) ![Shell](https://img.shields.io/badge/Shell-Linux-green) ![Linux](https://img.shields.io/badge/Platform-Linux-yellow?logo=linux) 
 
+![Cybersecurity](https://img.shields.io/badge/Field-Cybersecurity-red) ![Network Security](https://img.shields.io/badge/Focus-Network_Security-darkred)  ![DoH](https://img.shields.io/badge/Protocol-DNS_over_HTTPS-purple)
+
+![Threat Detection](https://img.shields.io/badge/Category-Traffic_Analysis-orange) ![Research Project](https://img.shields.io/badge/Type-Research-blue) ![Status](https://img.shields.io/badge/Status-Active-success)
+---
 This work is a functional prototype designed for real-time detection of command-and-control (C2) beacons hidden within DNS-over-HTTPS (DoH) tunnels. The core objective was to move beyond packet-size analysis, which is limited by RFC 8484 padding, and instead focus on temporal side-channels. By analyzing the  automated traffic versus the stochastic nature of human browsing, the system identifies malicious beacons.
 
 ## Architecture and Distributed Setup
