@@ -1,0 +1,8 @@
+sensor:
+  interface: "enp0s3"           # networjk interface
+  bpf_filter: "tcp port 443"    # strictly HTTPS/DoH
+  
+export:
+  destination_ip: "192.168.1.x" # Dest Host IP
+  destination_port: 5005         # Port for metadata stream
+  protocol: "udp"                # udp
